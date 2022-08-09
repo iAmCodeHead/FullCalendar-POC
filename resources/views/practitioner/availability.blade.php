@@ -16,6 +16,14 @@
                               <form action="{{route('practitioner.availability.create')}}" method="post">
                                 @csrf
                                 <div class="col-md-12 mt-3">
+                                    <label for="">Service</label>
+                                    <select name="service" id="service" class="form-control">
+                                      @foreach ($services as $service)
+                                      <option value="{{$service->id}}">{{$service->name}}</option>
+                                      @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-12 mt-3">
                                     <label for="">Date</label>
                                     <input type="date" name="date" id="date" class="form-control">
                                 </div>
@@ -44,6 +52,7 @@
                             @forelse ($availabilities as $availability)
                                 <div class="row">
                                     <div class="col-md-9">
+                                        <h4 style="color:ccc">{{$availability->service->name}}</h4>
                                     <p style="color:ccc">{{\Carbon\carbon::parse($availability->date)->format('M d Y')}}</p>
                                     <p>{{\Carbon\carbon::parse($availability->start)->format('H:i A')}} - {{\Carbon\carbon::parse($availability->end)->format('H:i A')}} </p>
                                     </div>

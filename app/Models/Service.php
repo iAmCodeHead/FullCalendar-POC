@@ -17,4 +17,8 @@ class Service extends Model
        return $this->belongsTo('App\Models\User', 'uid');
     }
 
+    public function availability(){
+        return $this->hasMany('App\Models\Availability');
+    }
+
 }

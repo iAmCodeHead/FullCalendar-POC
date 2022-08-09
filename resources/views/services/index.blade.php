@@ -85,7 +85,7 @@
               <div class="row">
                 <div class="col-md-6 mt-3">
                   <label for="">Date</label>
-                  <input type="date" name="date" id="date" class="form-control form-control-sm">
+                  <input type="text" name="date" id="datepicker"  class="form-control form-control-sm">
                 </div>
 
               <div class="col-md-6 mt-3">
@@ -127,6 +127,43 @@
                     }
                 });
             });
+
+
+            // availableDates = ["03/04/019", "07/05/2018", "10/06/2018", "10/31/2018", "08/01/2018"];
+            availableDates = [<?php echo '"'.implode('","', $data).'"' ?>],
+            console.log(availableDates)
+            // holidays_dates = { "08/02/2018": "sgsdf", "10/27/2018": "home sick", "07/20/2018": "fcg", "07/26/2018": "i dont know", "08/25/2018": "home sick" }
+            // console.log($availableDates)
+
+          function available(date) {
+
+              var moth = String(date.getMonth() + 1);
+              if (moth.length == 1) {
+                  moth = "0" + moth;
+              }
+
+              var dat = String(date.getDate());
+              if (dat.length == 1) {
+                  dat = "0" + dat;
+              }
+              dmy = moth + "/" + dat + "/" + date.getFullYear();
+
+              if ($.inArray(dmy, availableDates) != -1)    {
+                  return [true, ""];
+              } else {
+                  return [false, ""];
+              }
+          }
+
+
+          $("#datepicker").datepicker({
+              beforeShowDay: function (dt) {
+                  return available(dt);
+              },
+              changeMonth: true,
+              changeYear: true,
+              dateFormat: 'mm/dd/yy',
+          });
         })
     </script>
 @endsection

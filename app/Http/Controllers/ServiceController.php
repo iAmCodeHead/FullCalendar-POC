@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Availability;
 use App\Models\Service;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +19,14 @@ class ServiceController extends Controller
     public function index(){
         $services = Service::with('users')->where('uid', Auth::user()->id)->latest()->get();
         $clients = User::where('role', 'user')->latest()->get();
-        return view('services.index', compact('services', 'clients'));
+        $availability = Availability::select('date')->get();
+        $data = [];
+        foreach($availability as $date){
+          array_push($data, 
+            Carbon::parse($date->date)->format('m/d/Y'));
+        }
+
+        return view('services.index', compact('services', 'clients', 'data'));
     }
 
     public function create(){

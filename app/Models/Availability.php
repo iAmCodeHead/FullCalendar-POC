@@ -12,4 +12,8 @@ class Availability extends Model
     protected $fillable = [
         'uid', 'service_id', 'date', 'start', 'end'
     ];
+
+    public function service(){
+        return $this->belongsTo('App\Models\Service', 'service_id');
+    }
 }

@@ -13,7 +13,26 @@ use Illuminate\Support\Facades\DB;
 class BookingController extends Controller
 {
     public function practitionerbookings(){
-        return view('practitioner.booking');
+        $events = Booking::leftJoin('services', function($join) {
+            $join->on('bookings.service_id', '=', 'services.id');})->get();
+     
+            // ['bookings.id', 'services.name as title', 'bookings.start', 'bookings.end']
+            $booking = [];
+
+            // return $events;
+            foreach($events as $event){
+                $row = [];
+                $row['id'] = $event->id;
+                $row['title'] = $event->name;
+                $row['start'] = $event->start;
+                $row['end'] = $event->end;
+                $row['color'] = "#199bb5";
+                $booking[] = $row;
+            }
+
+            // return $booking;
+
+        return view('practitioner.booking', compact('booking'));
     }
 
     public function practitionerbookclient(Request $request){

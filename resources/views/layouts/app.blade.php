@@ -9,18 +9,17 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+<!-- Styles -->
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+    
+
     <!-- Scripts -->
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> --}}
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
-    <script src="{{asset('jquery-ui-1.13.2.custom/jquery-ui.min.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
-    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  ></script>
-    <script src="{{asset('fullcalendar-5/lib/main.min.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/index.js') }}" defer></script>
     
@@ -29,14 +28,55 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.css"> --}}
-    <link rel="stylesheet" href="{{asset('fullcalendar-5/lib/main.min.css')}}">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    {{-- <script src="{{asset('jquery-ui-1.13.2.custom/jquery-ui.css')}}"></script> --}}
+
 
     <style>
+
+        .fc-event{font-size:1em; padding-top: 25px; padding-left:15px;}
+        .fc-day{border: 'none'}
+        .fc-event{width:100%}
+        .fc-event{'white-space': 'initial'}
+        .fc-month-button{
+            'background': '#199bb5',
+            'color': 'white',
+            'border': 'none'
+        }
+        .fc-agendaWeek-button{
+            'background': '#fff',
+            'border':'1px solid #199bb5',
+            'color': '#199bbg',
+  
+        }
+        .fc-agendaDay-button{
+            'background': '#fff',
+            'border':'1px solid #199bb5',
+            'color': '#199bbg',
+        }
+
+        .fc-day-number{
+            'float':'none',
+            'margin':'0 auto'
+        }
+
+        .fc-prev-button{
+            background : #fff;
+            border:1px solid #199bb5;
+            color: #199bbg;
+        }
+
+        .fc-next-button{
+            background: #fff;
+            border:1px solid #199bb5;
+            color: #199bbg;
+        }
+
+        .fc-today{
+            background: #E4F1F4 !important;
+        }
+
+        .fc-widget-content{
+            height:80px !important;    
+        }
         
     </style>
 </head>

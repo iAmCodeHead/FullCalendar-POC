@@ -29,7 +29,7 @@ Route::post('/services/create', [App\Http\Controllers\ServiceController::class, 
 
 // Booking
 Route::get('/practioner/booking', [App\Http\Controllers\BookingController::class, 'practitionerbookings'])->middleware('practitioner')->name('practitioner.booking');
-Route::get('/practioner/fetch/booking', [App\Http\Controllers\BookingController::class, 'fetchbooking'])->middleware('practitioner')->name('fetch.booking');
+Route::get('/practioner/fetch/availability', [App\Http\Controllers\AvailabilityController::class, 'fetchavailability'])->middleware('practitioner')->name('fetch.availability');
 Route::post('/practioner/booking', [App\Http\Controllers\BookingController::class, 'practitionerbookclient'])->middleware('practitioner')->name('book.client');
 Route::get('/practioner/availability', [App\Http\Controllers\AvailabilityController::class, 'practitioneravailability'])->middleware('auth','practitioner')->name('practitioner.availability');
 Route::post('/practioner/availability', [App\Http\Controllers\AvailabilityController::class, 'practitioneravailabilitycreate'])->middleware('auth','practitioner')->name('practitioner.availability.create');

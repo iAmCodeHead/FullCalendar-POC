@@ -2,7 +2,10 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-12 shadow p-5" id="calendar">
+            <div class="col-md-8 shadow p-5" id="calendar">
+
+            </div>
+            <div class="col-md-4" id="calendar2">
 
             </div>
         </div>
@@ -27,6 +30,18 @@
                 left: 'prev, next',
                 center: 'title',
                 right: 'agendaDay,agendaWeek',
+            },
+            events: booking,
+            selectable: true,
+            selectHelper: true,
+        })
+
+        $('#calendar2').fullCalendar({
+            // defaultView: 'month',
+            header: {
+                right: 'prev, next',
+                left: 'title',
+                // right: '',
             },
             events: booking,
             selectable: true,
